@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CodeBase.Data;
 using CodeBase.MyPlugins;
 using UnityEngine;
 namespace CodeBase.SaveSystemDir
@@ -9,13 +10,26 @@ namespace CodeBase.SaveSystemDir
         private string _filePath;
         private GameData _gameData;
         private JsonSerializer _serializer;
+        private AESCrypto _encrypter;
         private string _fileExtension;
         public DataService(JsonSerializer serializer)
         {
             _filePath = Application.persistentDataPath;
             _serializer = serializer;
+            //_encrypter = new AESCrypto("%@&)##_<%\"'=}|^)|&{|]--['(,@!>=:");
             _fileExtension = "json";
         }
+
+        public string EncryptedJson(string json)
+        {
+            return _encrypter.Encrypt(json);
+        }
+
+        public string DecryptedJson(string json)
+        {
+            return _encrypter.Decrypt(json);
+        }
+
         public void SaveGame(GameData data)
         {
             string fileLocation = GetPathToFile(data.Name);
@@ -23,12 +37,10 @@ namespace CodeBase.SaveSystemDir
             File.WriteAllText(fileLocation,currentData);
             DebugExtantion.SuccesLog($"Game was succes saved!");
         }
-
         private string GetPathToFile(string fileName)
         {
-            return Path.Combine(_filePath, string.Concat(fileName, ".", _fileExtension));
+            return Path.Combine(_filePath,string.Concat(fileName, ".", _fileExtension));
         }
-
         public GameData LoadGame(string json)
         {
             string fileLocation = GetPathToFile(json);
@@ -36,7 +48,8 @@ namespace CodeBase.SaveSystemDir
             {
                 throw new Exception($"File is not exist!");
             } 
-            DebugExtantion.SuccesLog($"Loading was succed!");
+            //string encryptedJson = File.ReadAllText(fileLocation);
+            DebugExtantion.SuccesLog($"Loading was successful!");
             return _serializer.Deserialize<GameData>(File.ReadAllText(fileLocation));
         }
         public void DeleteGame(string name){

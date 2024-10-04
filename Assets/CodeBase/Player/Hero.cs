@@ -1,27 +1,18 @@
-﻿using CodeBase.SaveSystemDir;
+﻿using CodeBase.Data;
+using CodeBase.SaveSystemDir;
 using UnityEngine;
 namespace CodeBase.Player
 {
     public class Hero : MonoBehaviour
     {
-        [SerializeField] private PlayerData _playerData;
-
-        private void Bind(PlayerData data)
+        private PlayerData Bind(GameData data)
         {
-            _playerData = data;
-            transform.position = data._position;
-            transform.rotation = data._rotation;
+            return data.PlayerData;
         }
-
-        private void Start()
-        {
-            Bind(SaveSystem._instance._gameData.PlayerData);
-        }
-
         private void Update()
         {
-            SaveSystem._instance._gameData.PlayerData._position = transform.position;
-            SaveSystem._instance._gameData.PlayerData._rotation = transform.rotation;
+            Bind(SaveSystem._instance._gameData)._position = transform.position;
+            Bind(SaveSystem._instance._gameData)._rotation = transform.rotation;
         }
     }
 }

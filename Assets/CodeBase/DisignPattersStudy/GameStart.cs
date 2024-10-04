@@ -1,4 +1,5 @@
 ﻿using CodeBase.DisignPattersStudy;
+using CodeBase.SaveSystemDir;
 using UnityEngine;
 
 public class GameStart : MonoBehaviour
@@ -12,7 +13,9 @@ public class GameStart : MonoBehaviour
     }
     private void Start()
     {
-        _gameFactory.CreatePlayer(_assetProvider.GetPrefabFromPath(AssetPaths.PLAYER_PATH));
+        var playerPosition = SaveSystem._instance._gameData.PlayerData._position;
+        var playerRotation = SaveSystem._instance._gameData.PlayerData._rotation;
+        _gameFactory.CreatePlayer(_assetProvider.GetPrefabFromPath(AssetPaths.PLAYER_PATH),playerPosition,playerRotation);
         _gameFactory.CreateHud(_assetProvider.GetPrefabFromPath(AssetPaths.HUD_PATH));
     }
 }

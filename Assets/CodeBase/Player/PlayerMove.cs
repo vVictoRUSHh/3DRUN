@@ -13,11 +13,7 @@ namespace CodeBase.Player
         private void Awake() => _inputService = Game._inputService;
         private void Update() => Move();
 
-        private void Start()
-        {
-            SaveSystem._instance.NewGame();
-            SaveSystem._instance.SaveGame();
-        }
+        
 
 
         public void Move()

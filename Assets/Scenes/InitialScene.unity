@@ -359,6 +359,12 @@ MonoBehaviour:
   _gameData:
     Name: New Game!
     LvlName: First
+    PlayerData:
+      _position: {x: 0, y: 0, z: 0}
+      _rotation: {x: 0, y: 0, z: 0, w: 0}
+    ResourcesData:
+      _coins: 0
+      _realyMoney: 0
 --- !u!4 &792801951
 Transform:
   m_ObjectHideFlags: 0

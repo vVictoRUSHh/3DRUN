@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CodeBase.Data;
+using UnityEngine;
 
 namespace CodeBase.SaveSystemDir
 {
@@ -8,10 +9,11 @@ namespace CodeBase.SaveSystemDir
         public static SaveSystem _instance;
         private IDataService _dataService;
 
-
+        
         private void Start()
         {
             _dataService = new DataService(new JsonSerializer());
+            LoadGame(_gameData.Name);
         }
 
         public void NewGame()
@@ -19,7 +21,8 @@ namespace CodeBase.SaveSystemDir
             _gameData = new GameData
             {
                 Name = "New Game!",
-                LvlName = "Zalupa"
+                LvlName = "Zalupa",
+                PlayerData = new PlayerData()
             };
         }
 

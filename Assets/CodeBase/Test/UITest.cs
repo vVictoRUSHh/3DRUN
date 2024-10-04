@@ -9,12 +9,10 @@ namespace CodeBase.Test
     {
         [SerializeField] private TMP_Text _text;
         string jsonName = SaveSystem._instance._gameData.Name;
-
         private void Start()
         {
             _text.text = SaveSystem._instance._gameData.Name;
         }
-
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F))
