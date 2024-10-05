@@ -1,4 +1,6 @@
-﻿using CodeBase.MyPlugins;
+﻿using CodeBase.Data;
+using CodeBase.MyPlugins;
+using CodeBase.SaveSystemDir;
 using CodeBase.Services;
 using UnityEngine;
 namespace CodeBase.Infrastracture
@@ -6,10 +8,13 @@ namespace CodeBase.Infrastracture
     public class Game
     {
         public static IInputService _inputService;
+        
         public Game()
         {
             InputRegistration();
         }
+        
+        
         private void InputRegistration()
         {
             if (Application.isEditor)

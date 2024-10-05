@@ -12,10 +12,6 @@ namespace CodeBase.Player
         private IInputService _inputService;
         private void Awake() => _inputService = Game._inputService;
         private void Update() => Move();
-
-        
-
-
         public void Move()
         {
             Vector3 moveVector = new Vector3(_inputService.Axis.x, 0, _inputService.Axis.y) *

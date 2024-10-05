@@ -1,6 +1,5 @@
 ﻿using CodeBase.Data;
 using UnityEngine;
-
 namespace CodeBase.SaveSystemDir
 {
     public class SaveSystem : MonoBehaviour
@@ -8,8 +7,6 @@ namespace CodeBase.SaveSystemDir
         [SerializeField] public GameData _gameData;
         public static SaveSystem _instance;
         private IDataService _dataService;
-
-        
         private void Start()
         {
             _dataService = new DataService(new JsonSerializer());

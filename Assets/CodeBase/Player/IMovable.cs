@@ -1,4 +1,7 @@
-﻿public interface IMovable
+﻿namespace CodeBase.Player
 {
-    public void Move();
+    public interface IMovable
+    {
+        public void Move();
+    }
 }
