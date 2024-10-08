@@ -7,7 +7,10 @@ namespace CodeBase.DisignPattersStudy
         {
             Object.Instantiate(playerPrefab,position,rotation);
         }
-
+        public void CreateOject(GameObject playerPrefab)
+        {
+            Object.Instantiate(playerPrefab);
+        }
         public void CreateHud(GameObject hudPrefab) 
         {
            Object.Instantiate(hudPrefab);
