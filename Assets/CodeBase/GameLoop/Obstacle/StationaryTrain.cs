@@ -8,6 +8,7 @@ namespace CodeBase.GameLoop.Obstacle
         [SerializeField] private float _duration;
         [SerializeField] private Transform _start;
         [SerializeField] private Transform _finish;
+        
         public void Move()
         {
             transform.position -= Vector3.Slerp(_start.position, _finish.position, _duration) * Time.deltaTime * _speed;
