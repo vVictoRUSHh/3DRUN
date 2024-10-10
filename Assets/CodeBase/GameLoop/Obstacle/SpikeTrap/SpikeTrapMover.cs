@@ -1,41 +1,46 @@
 ﻿using System.Collections;
+using CodeBase.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 namespace CodeBase.GameLoop.Obstacle.SpikeTrap
 {
     public class SpikeTrapMover : MonoBehaviour
     {
-        
         [SerializeField] private Transform _lowPoint;
         [SerializeField] private Transform _hightPoint;
         [SerializeField] private GameObject _spikes; 
-        public float moveSpeed = 2f; // Скорость движения
-
+        public float moveSpeed = 2f;
         private void Start()
         {
-            StartCoroutine(MoveSpikes());
+            _spikes.transform.position = _lowPoint.transform.position;
         }
 
-        private IEnumerator MoveSpikes()
+        private void OnTriggerStay(Collider other)
         {
-            while (true) 
+            if (other.TryGetComponent(out PlayerMove playerMove))
             {
-                yield return MoveToPosition(_hightPoint.position);
-                yield return MoveToPosition(_lowPoint.position);
+                StartCoroutine(SpikeOpenning(1f));
+                print($" I ditect something!");
             }
         }
-
-        private IEnumerator MoveToPosition(Vector3 targetPosition)
+        private void OnTriggerExit(Collider other)
         {
-            while (Vector3.Distance(_spikes.transform.position, targetPosition) > 0.01f)
+            if (other.TryGetComponent(out PlayerMove playerMove))
             {
-                _spikes.transform.position = Vector3.MoveTowards(_spikes.transform.position, targetPosition, moveSpeed * Time.deltaTime);
-                yield return null;
+                StartCoroutine(SpikeClosing(1f));
+                print($" I exit!");
             }
-            _spikes.transform.position = targetPosition;
+        } 
+        [ContextMenu("Open SpykeTrap")]
+        private IEnumerator SpikeOpenning(float spykeDuration)
+        {
+             _spikes.transform.position = Vector3.MoveTowards(_spikes.transform.position, _hightPoint.position,moveSpeed * Time.deltaTime); 
+            yield break;
         }
-        
-        
+        [ContextMenu("Open SpykeTrap")]
+        private IEnumerator SpikeClosing(float spykeDuration)
+        {
+            _spikes.transform.position = Vector3.MoveTowards(_spikes.transform.position,_lowPoint.position,moveSpeed);
+            yield break;
+        }
     }
 }

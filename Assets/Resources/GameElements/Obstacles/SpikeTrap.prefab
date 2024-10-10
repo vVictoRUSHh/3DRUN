@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5763724258315251211}
   - component: {fileID: 7098229011012744651}
   m_Layer: 0
-  m_Name: Props_2a
+  m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8732660567208513355}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: HightPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3934944699270887278}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LowPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 7471643741265888227}
   - component: {fileID: 1669612782025385887}
   - component: {fileID: 5918810098269561936}
+  - component: {fileID: 1801707637262504752}
   m_Layer: 0
   m_Name: SpikeTrap
   m_TagString: Untagged
@@ -172,7 +173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5147107313104217638}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7, z: 6.11}
   m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_ConstrainProportionsScale: 1
@@ -247,7 +248,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c6167484b34db28db2695032064ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftSide: {fileID: 3934944699270887278}
-  _rightSide: {fileID: 8732660567208513355}
+  _lowPoint: {fileID: 3934944699270887278}
+  _hightPoint: {fileID: 8732660567208513355}
   _spikes: {fileID: 1334293464782974662}
-  moveSpeed: 2
+  moveSpeed: 20
+--- !u!65 &1801707637262504752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147107313104217638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9846356, y: 0.14296818, z: 1.9257758}
+  m_Center: {x: -0.0040296316, y: 0.0822718, z: 0.009179175}
