@@ -1,44 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using CodeBase.DisignPattersStudy;
-using Unity.Mathematics;
+﻿using CodeBase.DisignPattersStudy;
 using UnityEngine;
 namespace CodeBase.GameLoop
 {
-    public class RoadSpawner : MonoBehaviour
+    public class RoadSpawner
     {
-        [SerializeField] private int _countOfRoads;
-        [SerializeField] private Vector3 _offset;
-        private Vector3 _currentPosition;
         private GameObject roadPrefab;
         private IAssetProvider _assetProvider;
         private IGameFactory _gameFactory;
-
-        private void Awake()
+        public RoadSpawner(IAssetProvider assetProvider, IGameFactory gameFactory) 
         {
-            _assetProvider = new AssetProvider();
-            _gameFactory = new GameFactory();
+            _assetProvider = assetProvider;
+            _gameFactory = gameFactory;
             roadPrefab = _assetProvider.GetPrefabFromPath(AssetPaths.ROAD_PATH);
         }
-        private void Start()
+        public void CreateRoad(float offset)
         {
-            for (int i = 0; i <= _countOfRoads; i++)
-            {
-                SpawnRoad(i,roadPrefab);
-            }
-        }
-        public void SpawnRoad(int i,GameObject roadPrefab)
-        {
-            if(i == 0)
-            {
-                _gameFactory.CreateOject(roadPrefab);
-            }
-            else
-            {
-                var spawnPos =_currentPosition + _offset;
-                _gameFactory.CreateOject(roadPrefab,spawnPos,quaternion.identity);
-                _currentPosition = spawnPos;
-            }
+            _gameFactory.CreateOject(roadPrefab, new Vector3(0, 0,offset), Quaternion.identity);
         }
     }
 }

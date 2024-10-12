@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-namespace CodeBase.GameLoop.Obstacle.RollingWood
+namespace CodeBase.GameLoop.Obstacle.CircleSpike
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class RollingWoodMover : MonoBehaviour
+    public class CircleSpikeMover : MonoBehaviour
     {
         [SerializeField] private float _speed;
         [SerializeField] private Rigidbody _rigidbody;
