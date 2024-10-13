@@ -16,8 +16,8 @@ namespace CodeBase.Player
         {
             var playerPosition = SaveSystem._instance._gameData.PlayerData._position;
             var playerRotation = SaveSystem._instance._gameData.PlayerData._rotation;
-            _gameFactory.CreateOject(_assetProvider.GetPrefabFromPath(AssetPaths.PLAYER_PATH),playerPosition,playerRotation);
-            _gameFactory.CreateHud(_assetProvider.GetPrefabFromPath(AssetPaths.HUD_PATH));
+            _gameFactory.CreateOject(_assetProvider.GetPlayer(),playerPosition,playerRotation);
+            _gameFactory.CreateHud(_assetProvider.GetHud());
         }
     }
 }

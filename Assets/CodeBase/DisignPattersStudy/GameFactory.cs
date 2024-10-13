@@ -3,6 +3,7 @@ namespace CodeBase.DisignPattersStudy
 {
     public class GameFactory : IGameFactory
     {
+        private IAssetProvider _assetProvider;
         public void CreateOject(GameObject playerPrefab, Vector3 position, Quaternion rotation)
         {
             Object.Instantiate(playerPrefab,position,rotation);

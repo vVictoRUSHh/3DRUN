@@ -1,5 +1,4 @@
-﻿using System;
-using CodeBase.DisignPattersStudy;
+﻿using CodeBase.DisignPattersStudy;
 using CodeBase.Player;
 using UnityEngine;
 namespace CodeBase.GameLoop
@@ -12,7 +11,6 @@ namespace CodeBase.GameLoop
         {
             _roadSpawner = new RoadSpawner(new AssetProvider(),new GameFactory());
         }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerMove playerMove))
