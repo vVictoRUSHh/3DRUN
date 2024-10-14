@@ -19,7 +19,7 @@ namespace CodeBase.Player
             _playAreaLimiter = GetComponent<PlayAreaLimiter>();
             _inputService = Game._inputService;
         }
-        private void FixedUpdate() => Move();
+        private void Update() => Move();
 
         public void Move()
         {
