@@ -230,6 +230,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveConst: 5.6
   _moveDuration: 0.1
+  _moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 154474b4-b26d-409c-a47b-3a2a6bd5db60
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &3930331327825036007
 MonoBehaviour:
   m_ObjectHideFlags: 0

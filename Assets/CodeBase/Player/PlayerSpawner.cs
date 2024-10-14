@@ -14,10 +14,7 @@ namespace CodeBase.Player
         }
         private void Start()
         {
-            var playerPosition = SaveSystem._instance._gameData.PlayerData._position;
-            var playerRotation = SaveSystem._instance._gameData.PlayerData._rotation;
-            _gameFactory.CreateOject(_assetProvider.GetPlayer(),playerPosition,playerRotation);
-            _gameFactory.CreateHud(_assetProvider.GetHud());
+            _gameFactory.CreateOject(_assetProvider.GetPlayer(),new Vector3(0.4f,2,3.4f),Quaternion.identity);
         }
     }
 }
