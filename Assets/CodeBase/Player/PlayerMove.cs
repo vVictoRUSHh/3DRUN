@@ -10,6 +10,7 @@ namespace CodeBase.Player
     {
         [SerializeField] private float _moveConst;
         [SerializeField] private float _moveDuration;
+        [SerializeField] private SwipeDitector _swipeDitector;
         private CharacterController _characterController;
         private PlayAreaLimiter _playAreaLimiter;
         private IInputService _inputService;
@@ -23,12 +24,11 @@ namespace CodeBase.Player
 
         public void Move()
         {
-            var direction = _inputService.isMovingRight() ? 1 : _inputService.isMovingLeft() ? -1 : 0;
             _playAreaLimiter.LimitingPlayArea();
-
-            if (direction != 0)
+            if (!_swipeDitector._isSwiped)
             {
-                var targetPosition = transform.position + new Vector3(direction * _moveConst, 0, 0);
+                var targetPosition = transform.position + new Vector3(_swipeDitector._swipeDirection.x * _moveConst,0,0);
+                print(targetPosition);
                 StartCoroutine(MoveToPosition(targetPosition, _moveDuration));
             }
         }
