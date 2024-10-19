@@ -63,8 +63,8 @@ public class SwipeDitector : MonoBehaviour
     }
     private bool IsMinimalSwipeDistanceAccepted()
     {
-
-        return HorizontalSwipeValue() > _minimumSwipeDistance || VerticalSwipeValue() > _minimumSwipeDistance;
+        print(SetupSwipeSensativity.Instance._swipeSensitivity);
+        return HorizontalSwipeValue() > SetupSwipeSensativity.Instance._swipeSensitivity || VerticalSwipeValue() > SetupSwipeSensativity.Instance._swipeSensitivity;
     }
     private float HorizontalSwipeValue()
     {
